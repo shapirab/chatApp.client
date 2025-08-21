@@ -1,0 +1,38 @@
+.home__container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.home__buttons-container{
+  width: 50%;
+  background: linear-gradient(180deg, #5473A4FF 0%, #5473A4FF 39%, #073AFFFF 50%, #C6CA62FF 70%, #FAFF7CFF 98%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home__buttons{
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 4rem;
+  width: 100%;
+}
+
+.home__button{
+  margin-bottom: 3rem;
+}
+
+.home__icon{
+  margin-top: 5rem;
+  border-radius: 100%;
+  width: 15rem;
+  padding: 2rem;
+  border: 5px solid #fff;
+  background-color: rgb(150, 100, 50);
+}
