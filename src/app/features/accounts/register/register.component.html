@@ -1,1 +1,59 @@
-<p>register works!</p>
+<div class="container">
+  <div class="container--buttons">
+    <form [formGroup]="registerForm" (submit)="onSubmit()">
+      <div class="account-form__header">
+        <h1 class="account-form__heading">Register</h1>
+      </div>
+      <div class="account-form__body">
+        <div class="account-form__input">
+          <label for="">First Name</label>
+          <input type="text" formControlName="firstName" placeholder="Please enter your first name">
+        </div>
+        <div class="account-form__input">
+          <label for="">Last Name</label>
+          <input type="text" formControlName="lastName" placeholder="Please enter your last name">
+        </div>
+        <div class="account-form__input">
+          <label for="">Email Address</label>
+          <input type="email" formControlName="email" placeholder="Please enter your email address">
+        </div>
+        <div class="account-form__input">
+          <label for="">Password</label>
+          <input type="password" formControlName="password" placeholder="Please enter your password">
+        </div>
+        <div class="account-form__input">
+          <label for="">Display Name</label>
+          <input type="text" formControlName="displayName" placeholder="Please enter your display name">
+        </div>
+        <div class="account-form__sub-header">
+          <h3 class="account-form__sub-heading">Please enter your address</h3>
+        </div>
+        <div class="account-form__input">
+          <label for="">Street</label>
+          <input type="text" formControlName="line1" placeholder="Please enter your street address">
+        </div>
+        <div class="account-form__input">
+          <label for="">Street</label>
+          <input type="text" formControlName="line1" placeholder="Please enter your street address">
+        </div>
+        <div class="account-form__input">
+          <label for=""></label>
+          <input type="text" formControlName="line2" placeholder="Please enter your street address">
+        </div>
+        <div class="account-form__input">
+          <label for="">City</label>
+          <input type="text" formControlName="city" placeholder="Please enter your city">
+        </div>
+        <div class="account-form__input">
+          <label for="">Country</label>
+          <input type="text" formControlName="country" placeholder="Please enter your country">
+        </div>
+        <div class="account-form__input">
+          <label for="">Zip Code</label>
+          <input type="text" formControlName="postalCode" placeholder="Please enter your zip code">
+        </div>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</div>

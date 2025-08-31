@@ -5,7 +5,6 @@ export interface RegisterUser{
   password: string,
   displayName?: string,
   address?: Address
-
 }
 
 export type Address = {

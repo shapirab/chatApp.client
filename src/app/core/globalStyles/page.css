@@ -1,0 +1,16 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.container--buttons{
+  width: 50%;
+  background: linear-gradient(180deg, #5473A4FF 0%, #5473A4FF 39%, #073AFFFF 50%, #C6CA62FF 70%, #FAFF7CFF 98%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
