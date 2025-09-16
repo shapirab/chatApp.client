@@ -1,0 +1,21 @@
+.account-form__body{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+
+.account-form__input{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.account-form__input form{
+  width: 100% !important;
+}
+
+.account-form__input input{
+  margin: 0.5rem 0;
+  padding: 1rem 5rem;
+  width: 100%;
+}
