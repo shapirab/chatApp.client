@@ -18,4 +18,10 @@
   margin: 0.5rem 0;
   padding: 1rem 5rem;
   width: 100%;
+  border-radius: 10px;
+  border: none;
+}
+
+.btn--primary{
+  font-size: 1.5rem;
 }
