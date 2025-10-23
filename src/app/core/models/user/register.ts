@@ -1,10 +1,10 @@
 export interface RegisterUser{
-  firstName?: string,
-  lastName?: string,
+  firstName: string,
+  lastName: string,
   email: string,
   password: string,
-  displayName?: string,
-  address?: Address
+  displayName: string,
+  address: Address
 }
 
 export type Address = {

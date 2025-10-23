@@ -24,6 +24,10 @@ export class AccountService {
     );
   }
 
+  register(register: RegisterUser){
+    return this.http.post(`${this.baseUrl}/account/register`, register, {withCredentials: true});
+  }
+
   getUserInfo(){
     return this.http.get<RegisterUser>(`${this.baseUrl}/account/user-info`, {withCredentials: true}).pipe(
       tap(user => {
