@@ -14,7 +14,6 @@ export class AccountService {
   private http = inject(HttpClient);
 
   login(login: LoginUser){
-    console.log('accountService::login(). loginUser: ', login)
     return this.http.post(`${this.baseUrl}/account/login`, login, {withCredentials: true, observe: 'response'}).pipe(
       switchMap(() => {
         return this.getUserInfo();

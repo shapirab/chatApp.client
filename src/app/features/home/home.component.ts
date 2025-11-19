@@ -10,11 +10,4 @@ import { AccountService } from '../../core/services/account/account.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
-  private accountService = inject(AccountService);
-
-  logout(){
-    this.accountService.logout().subscribe();
-  }
-
-}
+export class HomeComponent {}

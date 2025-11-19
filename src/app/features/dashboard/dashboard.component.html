@@ -1,0 +1,18 @@
+@if(accountService.currentUser()){
+  <div class="container">
+    <h1>welcome to Chat Hub Dashboard</h1>
+    <h2>Select a chat room</h2>
+    <div class="container--buttons">
+      <img class="home__icon" src="/robot.png" alt="">
+      <div class="home__buttons">
+        <!-- <button class="home__button btn btn--primary" routerLink="/register">Register</button>
+        <button class="home__button btn btn--secondary" routerLink="/login">Login</button> -->
+        <button class="home__button btn btn--secondary" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+}
+@else {
+  <h1>Sorry, you are not authorized to visit this page</h1>
+}
+
