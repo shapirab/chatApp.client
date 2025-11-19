@@ -1,1 +1,20 @@
-<p>login works!</p>
+<div class="container">
+  <div class="container--buttons">
+    <form [formGroup]="loginForm" (submit)="onLogin()">
+      <div class="account-form__header">
+        <h1 class="account-form__heading">Login</h1>
+      </div>
+      <div class="account-form__body">
+        <div class="account-form__input">
+          <label for="email">Email Address</label>
+          <input type="email" formControlName="email" placeholder="Please enter your email address">
+        </div>
+        <div class="account-form__input">
+          <label for="password">Password</label>
+          <input type="password" formControlName="password" placeholder="Please enter your password">
+        </div>
+      </div>
+      <button type="submit" class="btn btn--primary">Login</button>
+    </form>
+  </div>
+</div>

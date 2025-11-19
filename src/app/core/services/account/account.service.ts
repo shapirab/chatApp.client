@@ -14,13 +14,14 @@ export class AccountService {
   private http = inject(HttpClient);
 
   login(login: LoginUser){
-    return this.http.post(`${this.baseUrl}/account/login`, {login}, {withCredentials: true, observe: 'response'}).pipe(
+    console.log('accountService::login(). loginUser: ', login)
+    return this.http.post(`${this.baseUrl}/account/login`, login, {withCredentials: true, observe: 'response'}).pipe(
       switchMap(() => {
         return this.getUserInfo();
-      }),
-      tap(() => {
-        this.getUserInfo().subscribe();
       })
+      // tap(() => {
+      //   this.getUserInfo().subscribe();
+      // })
     );
   }
 
@@ -29,9 +30,18 @@ export class AccountService {
   }
 
   getUserInfo(){
+    console.log('accountService::getUserInfo() called');
     return this.http.get<RegisterUser>(`${this.baseUrl}/account/user-info`, {withCredentials: true}).pipe(
       tap(user => {
-        this.currentUser.set(user)
+        if(user){
+          console.log('getUserInfo(). user: ', user)
+          this.setUserHintCookie(user.email);
+          this.currentUser.set(user)
+        }
+        else {
+            this.setUserHintCookie(null);
+            this.currentUser.set(null);
+          }
       })
     );
   }
@@ -39,4 +49,32 @@ export class AccountService {
   logout(){
     return this.http.post(`${this.baseUrl}/account/logout`, {}, {withCredentials: true});
   }
+
+  private setUserHintCookie(email: string | null) {
+    const name = 'bb_user';
+    document.cookie = email
+      ? `${name}=${encodeURIComponent(
+          email
+        )}; Path=/; Max-Age=2592000; SameSite=None; Secure`
+      : `${name}=; Path=/; Max-Age=0; SameSite=None; Secure`;
+  }
+
+  private readUserHintCookie(): string | null {
+    const m = document.cookie.match(/(?:^|;\s*)bb_user=([^;]+)/);
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+
+  // Called on the client very early (see AppComponent below)
+  primeFromCookie() {
+    const email = this.readUserHintCookie();
+    if (email) {
+      const user = this.currentUser() ?? ({} as RegisterUser);
+      this.currentUser.set({ ...user, email } as RegisterUser);
+    }
+    else {
+      // Important for prerender: mark as "loaded and logged-out" on the client
+      this.currentUser.set(null);
+    }
+  }
+
 }

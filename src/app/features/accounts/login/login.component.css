@@ -1,0 +1,10 @@
+@import url('../../../core/sharedStyles/login.css');
+
+.container{
+  flex-direction: row;
+  height: 100vh;
+}
+
+.container--buttons{
+  height: 100%;
+}
