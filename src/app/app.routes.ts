@@ -3,10 +3,11 @@ import { HomeComponent } from './features/home/home.component';
 import { LoginComponent } from './features/accounts/login/login.component';
 import { RegisterComponent } from './features/accounts/register/register.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { loginGuard } from './core/guards/login.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent, canActivate: [loginGuard] }
 ];

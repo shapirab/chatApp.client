@@ -33,9 +33,9 @@ export class AccountService {
     return this.http.get<RegisterUser>(`${this.baseUrl}/account/user-info`, {withCredentials: true}).pipe(
       tap(user => {
         if(user){
-          console.log('getUserInfo(). user: ', user)
+          console.log('accountService::getUserInfo(). user: ', user)
           this.setUserHintCookie(user.email);
-          this.currentUser.set(user)
+          this.currentUser.set(user);
         }
         else {
             this.setUserHintCookie(null);
