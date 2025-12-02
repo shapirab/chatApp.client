@@ -14,13 +14,13 @@ export class AccountService {
   private http = inject(HttpClient);
 
   login(login: LoginUser){
-    return this.http.post(`${this.baseUrl}/account/login`, login, {withCredentials: true, observe: 'response'}).pipe(
+    return this.http.post<LoginUser>(`${this.baseUrl}/account/login`, login, {withCredentials: true, observe: 'response'}).pipe(
       switchMap(() => {
         return this.getUserInfo();
+      }),
+      tap(() => {
+        this.getUserInfo().subscribe();
       })
-      // tap(() => {
-      //   this.getUserInfo().subscribe();
-      // })
     );
   }
 
@@ -37,10 +37,10 @@ export class AccountService {
           this.setUserHintCookie(user.email);
           this.currentUser.set(user);
         }
-        else {
-            this.setUserHintCookie(null);
-            this.currentUser.set(null);
-          }
+        // else {
+        //     this.setUserHintCookie(null);
+        //     this.currentUser.set(null);
+        //   }
       })
     );
   }
