@@ -1,3 +1,6 @@
 @import url('./app/core/globalStyles/base.css');
 @import url('./app/core/globalStyles/btn.css');
 @import url('./app/core/globalStyles/page.css');
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

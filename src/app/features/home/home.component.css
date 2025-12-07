@@ -1,23 +1,23 @@
 
 
-.home__buttons{
+/* .home__buttons{
   margin-top: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 3rem 4rem;
   width: 100%;
-}
+} */
 
 .home__button{
   margin-bottom: 3rem;
 }
 
-.home__icon{
+/* .home__icon{
   margin-top: 5rem;
   border-radius: 100%;
   width: 15rem;
   padding: 2rem;
   border: 5px solid #fff;
   background-color: rgb(150, 100, 50);
-}
+} */
