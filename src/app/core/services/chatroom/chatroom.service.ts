@@ -21,6 +21,7 @@ export class ChatroomService {
   paginationMetadata$ = this.paginationMetadataSubject.asObservable();
 
   getChatrooms(chatRoomParams: ChatRoomParams): Observable<{chatRooms: ChatItemToReturnDto[], paginationMetadata: any}>{
+    console.log('chatroomService::getChatrooms called')
     let params = new HttpParams();
 
     if(chatRoomParams.activeMemberId){
@@ -39,6 +40,7 @@ export class ChatroomService {
     return this.http.get<ChatItemToReturnDto[]>(`${this.baseUrl}/chatRoom`, { params, observe: 'response' })
       .pipe(
         map(response => {
+            console.log('chatroomService::getChatrooms response: ', response.body)
             let paginationHeader = response.headers.get('X-Pagination');
             this.paginationMetadataSubject.next(JSON.parse(paginationHeader!));
             return {

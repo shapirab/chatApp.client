@@ -6,7 +6,6 @@ export const loginGuard: CanActivateFn = (route, state) => {
   let accountService = inject(AccountService);
   let router = inject(Router);
 
-  console.log('loginGuard:: currentUser: ', accountService.currentUser());
   if(accountService.currentUser()){
     return true;
   }
