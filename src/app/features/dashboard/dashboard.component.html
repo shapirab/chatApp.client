@@ -9,12 +9,12 @@
         <button class="home__button btn btn--secondary" routerLink="/login">Login</button> -->
         <mat-form-field>
           <mat-label>Chat Rooms</mat-label>
-          <mat-select [(value)]="selectedChatRoom">
+          <mat-select [(value)]="selectedChatRoom" (selectionChange)="navigateToRoom()">
             <!-- <mat-option *ngFor="let chatRoom of chatRooms" [value]="chatRoom.id">
               {{ chatRoom.id }}
             </mat-option> -->
             @for (chatRoom of chatRooms; track chatRoom.id) {
-              <mat-option [value]="chatRoom.id">{{chatRoom.id}}</mat-option>
+              <mat-option [value]="chatRoom">{{chatRoom.id}}</mat-option>
             }
           </mat-select>
         </mat-form-field>

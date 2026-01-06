@@ -7,6 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import ChatRoomParams from '../../core/models/chatRoom/chatRoomParams';
 import { ChatroomService } from '../../core/services/chatroom/chatroom.service';
+import { ChatRoomToReturnDto } from '../../core/models/chatRoom/chatRoomToReturnDto';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,8 +22,8 @@ import { ChatroomService } from '../../core/services/chatroom/chatroom.service';
 export class DashboardComponent implements OnInit{
   accountService = inject(AccountService);
   chatRoomService = inject(ChatroomService);
-  selectedChatRoom?: ChatItemToReturnDto;
-  chatRooms:ChatItemToReturnDto[] = [];
+  selectedChatRoom?: ChatRoomToReturnDto;
+  chatRooms:ChatRoomToReturnDto[] = [];
 
   private router = inject(Router);
 
@@ -46,6 +47,13 @@ export class DashboardComponent implements OnInit{
       error: err => console.log(err)
     });
 
+  }
+
+  navigateToRoom(){
+    if(this.selectedChatRoom){
+      console.log('dashboardComponent::navigateToRoom(). SelectedRoom: ', this.selectedChatRoom.id);
+      this.router.navigateByUrl(`chatroom/${this.selectedChatRoom.id}`);
+    }
   }
 
   logout(){

@@ -4,10 +4,12 @@ import { LoginComponent } from './features/accounts/login/login.component';
 import { RegisterComponent } from './features/accounts/register/register.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { loginGuard } from './core/guards/login.guard';
+import { ChatroomComponent } from './features/chatroom/chatroom.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [loginGuard] }
+  { path: 'dashboard', component: DashboardComponent, canActivate: [loginGuard] },
+  { path: 'chatroom/:id', component: ChatroomComponent }
 ];

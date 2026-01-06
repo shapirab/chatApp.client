@@ -20,7 +20,7 @@ export class ChatroomService {
   });
   paginationMetadata$ = this.paginationMetadataSubject.asObservable();
 
-  getChatrooms(chatRoomParams: ChatRoomParams): Observable<{chatRooms: ChatItemToReturnDto[], paginationMetadata: any}>{
+  getChatrooms(chatRoomParams: ChatRoomParams): Observable<{chatRooms: ChatRoomToReturnDto[], paginationMetadata: any}>{
     console.log('chatroomService::getChatrooms called')
     let params = new HttpParams();
 
@@ -37,7 +37,7 @@ export class ChatroomService {
     params = params.append('pageSize', chatRoomParams.pageSize);
     params = params.append('pageNumber', chatRoomParams.pageNumber);
 
-    return this.http.get<ChatItemToReturnDto[]>(`${this.baseUrl}/chatRoom`, { params, observe: 'response' })
+    return this.http.get<ChatRoomToReturnDto[]>(`${this.baseUrl}/chatRoom`, { params, observe: 'response' })
       .pipe(
         map(response => {
             console.log('chatroomService::getChatrooms response: ', response.body)
@@ -49,6 +49,10 @@ export class ChatroomService {
             };
         })
       );
+  }
+
+  getChatRoom(id:number): Observable<ChatRoomToReturnDto>{
+    return this.http.get<ChatRoomToReturnDto>(`${this.baseUrl}/chatRoom/${id}`);
   }
 
 }
