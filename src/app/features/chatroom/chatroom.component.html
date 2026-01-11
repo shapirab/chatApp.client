@@ -1,2 +1,10 @@
-<h1>Welcome to Chat Room no. {{chatRoom()?.id}}</h1>
-
+<div class="container">
+  <div class="header--chatroom">
+    <h4>Welcome to Chat Room no. {{chatRoom()?.id}}</h4>
+  </div>
+  <div class="chats-container">
+    @for (chat of chatRoom()?.chatItems; track chat.id) {
+      <app-chat-item [chatItem]="chat"></app-chat-item>
+    }
+  </div>
+</div>

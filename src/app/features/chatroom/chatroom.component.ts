@@ -3,10 +3,11 @@ import { ChatItemToReturnDto } from '../../core/models/chatItem/chatItemToReturn
 import { ChatroomService } from '../../core/services/chatroom/chatroom.service';
 import { ActivatedRoute } from '@angular/router';
 import { ChatRoomToReturnDto } from '../../core/models/chatRoom/chatRoomToReturnDto';
+import { ChatItemComponent } from "../chat-item/chat-item.component";
 
 @Component({
   selector: 'app-chatroom',
-  imports: [],
+  imports: [ChatItemComponent],
   templateUrl: './chatroom.component.html',
   styleUrl: './chatroom.component.css'
 })
