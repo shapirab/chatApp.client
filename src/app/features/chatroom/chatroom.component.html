@@ -1,10 +1,16 @@
 <div class="container">
-  <div class="header--chatroom">
-    <h4>Welcome to Chat Room no. {{chatRoom()?.id}}</h4>
-  </div>
-  <div class="chats-container">
-    @for (chat of chatRoom()?.chatItems; track chat.id) {
-      <app-chat-item [chatItem]="chat"></app-chat-item>
-    }
+  <div class="container--buttons">
+    <div class="header--chatroom">
+      <h4>Welcome to Chat Room no. {{chatRoom()?.id}}</h4>
+    </div>
+    <div class="chats-container">
+      @for (chat of chatRoom()?.chatItems; track chat.id) {
+        <app-chat-item [chatItem]="chat"></app-chat-item>
+      }
+    </div>
+    <div class="account-form__input">
+      <input type="text" class="input" #messageInput>
+      <button class="btn btn--primary" (click)="addChatItemToRoom(messageInput.value)">Add message</button>
+    </div>
   </div>
 </div>

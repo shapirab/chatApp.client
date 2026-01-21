@@ -1,5 +1,5 @@
 export interface ChatItemToAddDto{
-  userId: number,
+  userId: string,
   message: string,
   createdAt: Date
 }
