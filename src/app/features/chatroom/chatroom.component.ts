@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { ChatItemToReturnDto } from '../../core/models/chatItem/chatItemToReturnDto';
 import { ChatroomService } from '../../core/services/chatroom/chatroom.service';
 import { ActivatedRoute } from '@angular/router';
@@ -22,6 +22,8 @@ export class ChatroomComponent implements OnInit{
   private accountService = inject(AccountService);
   private route = inject(ActivatedRoute);
 
+  @ViewChild('messageInput') messageInput!: ElementRef<HTMLInputElement>;
+
   ngOnInit(): void {
     this.loadChatRoom();
   }
@@ -40,29 +42,26 @@ export class ChatroomComponent implements OnInit{
 
   //See https://claude.ai/chat/1b7f22d9-b33d-4d01-a674-5f531b2d591b for explanations!
   addChatItemToRoom(message: string) {
-  const id = this.route.snapshot.paramMap.get('id');
-  const currentUser = this.accountService.currentUser();
+    const id = this.route.snapshot.paramMap.get('id');
+    const currentUser = this.accountService.currentUser();
 
-  if (!id || !currentUser?.email) {
-    return;
-  }
-
-  console.log('chatroomComponent::addChatItemToRoom. Message: ', message);
-
-  const chatItemToAdd: ChatItemToAddDto = {
-    userId: currentUser.email,
-    message,
-    createdAt: new Date()
-  };
-
-  this.chatItemService.createChatItem(chatItemToAdd).pipe(
-      switchMap(chatItem =>
-        this.chatRoomService.addChatItemToRoom(+id, chatItem.id)
-      )
-    )
-    .subscribe({
-      next: res => console.log(res),
-      error: err => console.log(err)
+    if (!id || !currentUser?.email) {
+      return;
+    }
+    let chatItemToAdd: ChatItemToAddDto = {
+      userEmail: currentUser.email,
+      message,
+      createdAt: new Date()
+    };
+    this.chatItemService.createChatItem(chatItemToAdd).pipe(
+        switchMap(chatItem =>
+          this.chatRoomService.addChatItemToRoom(+id, chatItem.id)
+        )).subscribe({
+        next: () => {
+          this.loadChatRoom();
+          this.messageInput.nativeElement.value = '';
+        },
+        error: err => console.log(err)
     });
-}
+  }
 }

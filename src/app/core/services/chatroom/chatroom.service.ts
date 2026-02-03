@@ -55,8 +55,8 @@ export class ChatroomService {
     return this.http.get<ChatRoomToReturnDto>(`${this.baseUrl}/chatRoom/${id}`);
   }
 
-  addChatItemToRoom(chatRoomId:number, chatItemId:number): Observable<boolean>{
-    return this.http.post<boolean>(`${this.baseUrl}/chatRoom/messages/${chatRoomId}?chatItemId=${chatItemId}`, {}, {withCredentials: true});
+  addChatItemToRoom(chatRoomId:number, chatItemId:number): Observable<ChatItemToReturnDto>{
+    return this.http.post<ChatItemToReturnDto>(`${this.baseUrl}/chatRoom/messages/${chatRoomId}?chatItemId=${chatItemId}`, {}, {withCredentials: true});
   }
 
 }

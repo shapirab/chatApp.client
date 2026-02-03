@@ -1,6 +1,6 @@
 export interface ChatItemToReturnDto{
   id: number,
-  userId: number,
+  userEmail: number,
   message: string,
   createdAt: Date
 }
